@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{Flickr API adapter using OAuth}
   s.description = %q{}
 
-  s.rubyforge_project = "flickr-oauth"
+  s.rubyforge_project = "flickr_oauth"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
