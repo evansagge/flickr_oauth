@@ -1,6 +1,6 @@
 flickr_oauth
 =
-Flickr API adapter using OAuth authentication method.
+Flickr API adapter for Ruby using OAuth authentication method.
 
 USAGE
 -
