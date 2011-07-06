@@ -29,5 +29,5 @@ def oauth_options
  }
 end
 
-require 'oauth_keys'
+# require 'oauth_keys'
 # flickr.enable_logging = true # watch the magic come alive!

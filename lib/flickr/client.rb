@@ -1,13 +1,16 @@
 require 'flickr/client/authentication'
 require 'flickr/client/connection'
-require 'flickr/client/request'
+require 'flickr/client/requests'
+require 'flickr/client/upload'
+
 require 'flickr/node'
 
 module Flickr  
   class Client
     include Flickr::Client::Authentication
     include Flickr::Client::Connection
-    include Flickr::Client::Request
+    include Flickr::Client::Requests
+    include Flickr::Client::Upload
     
     CONFIGURATION_KEYS = [
       :consumer_key,

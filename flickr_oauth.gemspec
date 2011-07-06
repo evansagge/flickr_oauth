@@ -23,8 +23,10 @@ Gem::Specification.new do |s|
   
   s.add_dependency 'faraday', '>= 0.7'
   s.add_dependency 'faraday_middleware', '>= 0.7.0.rc1'
-  s.add_dependency 'multi_xml'
+  s.add_dependency 'mime-types'
+  s.add_dependency 'multipart-post'  
   s.add_dependency 'multi_json'
+  s.add_dependency 'multi_xml'  
   s.add_dependency 'simple_oauth'
   s.add_development_dependency 'rspec', '>= 2.6'
   s.add_development_dependency 'webmock', '>= 1.6'

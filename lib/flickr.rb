@@ -7,7 +7,7 @@ module Flickr
   SECURE_ENDPOINT = 'https://secure.flickr.com'.freeze
   REST_PATH = '/services/rest'.freeze
   UPLOAD_PATH = '/services/upload'.freeze
-  REPLACE_PATH = '/services/resplace'.freeze
+  REPLACE_PATH = '/services/replace'.freeze
   
   METHODS = %w(
     flickr.activity.userComments

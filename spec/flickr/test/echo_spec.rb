@@ -47,5 +47,5 @@ describe flickr.test.echo do
         result['format'].should == 'rest'        
       end
     end
-  end  
+  end
 end

@@ -1,6 +1,6 @@
 module Flickr
   class Client
-    module Request
+    module Requests
       
       def get(path, params = {})
         request :get, path, params
@@ -21,7 +21,13 @@ module Flickr
       def request(method, path, params = {})
         params = params.dup
         options = extract_connection_options(params)
-        response = connection(options).send(method, build_rest_query(path, params))
+        
+        if method.to_sym == :get
+          response = connection(options).send(method, build_rest_query(path, params))
+        else
+          response = connection(options).send(method, path, params)
+        end
+        
         if options[:normalize]
           options[:format].to_s == 'json' ? normalize_json(response.body) : normalize_xml(response.body)
         else
@@ -32,7 +38,7 @@ module Flickr
       protected
     
       def build_rest_query(path, params = {})
-        params[:format] ||= client.format
+        params[:format] ||= self.format
         params[:nojsoncallback] = (params[:format].to_s == 'json' ? 1 : nil)
         query = params.map{|k,v| "#{CGI.escape(k.to_s)}=#{CGI.escape(v.to_s)}" unless v.nil?}.compact.join("&")
         [path, query].join("?")
