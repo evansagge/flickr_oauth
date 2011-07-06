@@ -1,0 +1,44 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://api.flickr.com:80/services/rest?foo=bar&format=rest&method=flickr.test.echo
+    body: 
+    headers: 
+      authorization: 
+      - OAuth oauth_consumer_key="832f9421926d1232acaf6dc9a7e8881e", oauth_nonce="9c96979c40f33183f2fb3e3a4de0f633", oauth_signature="hj4knCdRtnsGLdxcSmxhc8dfKxM%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1309978105", oauth_token="72157626958368895-7040ded2da3c9b6b", oauth_version="1.0"
+      accept-encoding: 
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      date: 
+      - Wed, 06 Jul 2011 18:48:26 GMT
+      p3p: 
+      - policyref="http://p3p.yahoo.com/w3c/p3p.xml", CP="CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      x-served-by: 
+      - www48.flickr.mud.yahoo.com
+      cache-control: 
+      - private
+      vary: 
+      - Accept-Encoding
+      content-encoding: 
+      - gzip
+      content-length: 
+      - "368"
+      content-type: 
+      - text/xml; charset=utf-8
+    body: !binary |
+      H4sIAAAAAAAAA5WSy26DMBBF93wFYp+AbQK2BI6iLBqpzab5AGT8CJRgR2Aq
+      +vclDydqU6ntjpl77shzh2w5tgf/XXZ9bXQegHkU+FJzI2q9z4PBqhkO/CX1
+      sq4/+r1lNg9ME0y1MoaWrMvC08ep7FpmaSd7e2qdCy9rpa2MoOpQ86ab20mc
+      S16ZLLwKXmbYYKuCG90PreyKRn5QjKAiMQQEJgJABBlnKhGcsFRijIHMwh9M
+      bpI2mktKOElISngcKYQARgqqEknEYiEjlSDkRlxo5+3rvWZ26CSt3uJGr8Wr
+      1f3Tixj5rh0rjoV6Hre5897pB39xXW+zXa1nu80KPHiKbwHYup3CYe2RAhQR
+      kmIQLZzprt1o00hNUwgWaQITssAowZgsZmkUR0IKKBjipEzK24Qz79zXY9Pp
+      1g5wLS9jx7o4t+q+OGt0evxj8wL+7VqOvHimCH6J11ET/79lv+waTj8s9T4B
+      PxGdVt8CAAA=
+
+    http_version: "1.1"
