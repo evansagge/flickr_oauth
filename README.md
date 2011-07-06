@@ -28,6 +28,20 @@ Or, you can use the `flickr` method:
       :token_secret => OAUTH_ACCESS_TOKEN_SECRET,
       :format => :json
     )
+    
+For photo upload:
+
+    flickr.upload(
+      PATH_TO_IMAGE_FILE
+      :title => 'test upload',            # optional
+      :description => 'this is a test',   # optional
+      :tags => 'test upload',             # optional
+      :content_type => 'image/jpeg',      # optional
+      :consumer_key => CONSUMER_KEY, 
+      :consumer_secret => CONSUMER_SECRET, 
+      :token => OAUTH_ACCESS_TOKEN, 
+      :token_secret => OAUTH_ACCESS_TOKEN_SECRET
+    )
 
 TODO
 -
