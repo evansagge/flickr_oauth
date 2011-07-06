@@ -1,15 +1,13 @@
-require 'faraday'
-require 'faraday_middleware'
-require 'faraday/response/raise_flickr_error'
+require 'flickr/client/authentication'
+require 'flickr/client/connection'
+require 'flickr/client/request'
 require 'flickr/node'
 
-module Flickr
+module Flickr  
   class Client
-    DEFAULT_ENDPOINT = 'http://api.flickr.com'.freeze
-    SECURE_ENDPOINT = 'https://secure.flickr.com'.freeze
-    REST_PATH = '/services/rest'.freeze
-    UPLOAD_PATH = '/services/upload'.freeze
-    REPLACE_PATH = '/services/resplace'.freeze
+    include Flickr::Client::Authentication
+    include Flickr::Client::Connection
+    include Flickr::Client::Request
     
     CONFIGURATION_KEYS = [
       :consumer_key,
@@ -18,8 +16,9 @@ module Flickr
       :token_secret,
       :secure,
       :format,
-      :enable_logging
-    ]
+      :enable_logging,
+      :normalize
+    ]    
   
     attr_accessor *CONFIGURATION_KEYS
   
@@ -30,46 +29,15 @@ module Flickr
     end
     
     def endpoint(secure = false)
-      secure or self.secure  ? SECURE_ENDPOINT : DEFAULT_ENDPOINT
-    end
-    
-    def authentication(options = {})
-      {
-        :consumer_key => consumer_key,
-        :consumer_secret => consumer_secret,
-        :token => token,
-        :token_secret => token_secret
-      }.merge(options.select{|k,v| [:consumer_key, :consumer_secret, :token, :token_secret].include?(k.to_sym)})
-    end
-    
-    def adapter
-      @adapter || Faraday.default_adapter
-    end
-        
-    def connection(options = {})
-      @connection = Faraday.new(:url => endpoint(options[:secure])) do |builder|
-        builder.use Faraday::Request::OAuth, authentication(options)
-        builder.use Faraday::Request::Multipart
-        builder.use Faraday::Request::UrlEncoded
-                
-        builder.use Faraday::Response::RaiseFlickrError
-        if (options[:format] or format).to_s == 'json'
-          builder.use Faraday::Response::ParseJson
-        else
-          builder.use Faraday::Response::ParseXml
-        end        
-        builder.use Faraday::Response::RaiseError
-        builder.use Faraday::Response::Logger if options[:enable_logging] or enable_logging
-        
-        builder.adapter adapter
-      end
+      secure or self.secure  ? Flickr::SECURE_ENDPOINT : Flickr::DEFAULT_ENDPOINT
     end
   
-    protected
+    protected  
   
     def method_missing(method_name, *args)
+      # super unless ['reflection'].include?(method_name.to_s)      
       args.empty? ? Flickr::Node.new(self, ['flickr', method_name].join('.')) : super
-    end    
+    end
     
   end
 end

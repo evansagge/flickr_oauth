@@ -20,15 +20,14 @@ RSpec.configure do |config|
   config.mock_with :rspec
 end
 
-require 'shared_examples'
-
 def oauth_options
  {
-   :consumer_key => '',
+   :consumer_key => '', 
    :consumer_secret => '',
-   :token => '',
-   :token_secret => '',
+   :token => '', 
+   :token_secret => ''
  }
 end
 
+require 'oauth_keys'
 # flickr.enable_logging = true # watch the magic come alive!
