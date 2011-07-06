@@ -1,6 +1,22 @@
 module Flickr
   class Client
     module Request
+      
+      def get(path, params = {})
+        request :get, path, params
+      end
+      
+      def post(path, params = {})
+        request :post, path, params        
+      end
+      
+      def put(path, params = {})
+        request :put, path, params        
+      end
+      
+      def delete(path, params = {})
+        request :delete, path, params        
+      end
     
       def request(method, path, params = {})
         params = params.dup
@@ -13,7 +29,7 @@ module Flickr
         end
       end
     
-      # protected
+      protected
     
       def build_rest_query(path, params = {})
         params[:format] ||= client.format

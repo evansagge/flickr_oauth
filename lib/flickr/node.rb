@@ -13,7 +13,7 @@ module Flickr
     end
     
     def invoke(params = {})
-      client.request(:get, Flickr::REST_PATH, params.merge(:method => name))
+      client.get(Flickr::REST_PATH, params.merge(:method => name))
     end
     
     def to_s
