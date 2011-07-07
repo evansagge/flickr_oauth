@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'multi_json'
   s.add_dependency 'multi_xml'  
   s.add_dependency 'simple_oauth'
+  s.add_dependency 'rake'
   s.add_development_dependency 'rspec', '>= 2.6'
   s.add_development_dependency 'webmock', '>= 1.6'
   s.add_development_dependency 'vcr', '>= 1.7'
